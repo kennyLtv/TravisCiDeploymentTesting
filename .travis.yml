@@ -39,7 +39,7 @@ jobs:
     - stage: docs
       script: 
       - cd ./docs
-      - ./docs/node_modules/.bin/vuepress build
+      - ./node_modules/.bin/vuepress build
       - cd ../
       deploy:
         provider: pages
