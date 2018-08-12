@@ -1,0 +1,38 @@
+language: php
+php:
+  - 7.2
+
+before_install:
+  - sudo rm -rf ~/.nvm - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+  - sudo apt-get install -y nodejs
+
+jobs:
+  include:
+    - stage: Build Project
+      - npm install
+      - composer install
+      - npm run production
+      
+    - stage: Test
+      script: ./vendor/bin/phpunit
+
+    - stage: Build Docs
+      script: ./docs/node_modules/vuepress build
+
+    - stage: Deploy GH Page
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GITHUB_OAUTH_TOKEN
+        keep-history: true
+        on: 
+          branch: master
+
+    - stage: GitHub Release
+      deploy:
+        provider: releases
+        api_key: $GITHUB_OAUTH_TOKEN
+        skip_cleanup: true
+        on:
+          branch: master
+          tags: true
