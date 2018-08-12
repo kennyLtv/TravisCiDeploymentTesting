@@ -11,8 +11,8 @@ before_install:
 install:
   - npm install
   - composer install
-  - cd docs
-  - npm install
+  - cd docs && npm install
+  - cd $TRAVIS_BUILD_DIR/project
 
 stages:
   - build
