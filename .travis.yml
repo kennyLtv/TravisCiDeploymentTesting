@@ -18,6 +18,7 @@ install:
   - composer install
   - cd docs && npm install
   - cd ../
+  - cp .env.travis .env
 
 stages:
   - build
