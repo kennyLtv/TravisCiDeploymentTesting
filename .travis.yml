@@ -37,7 +37,7 @@ jobs:
       script: ./vendor/bin/phpunit
 
     - stage: docs
-      script: ./docs/node_modules/vuepress build
+      script: ./docs/node_modules/.bin/vuepress build
       deploy:
         provider: pages
         skip-cleanup: true
