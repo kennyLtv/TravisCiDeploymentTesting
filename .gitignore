@@ -13,3 +13,4 @@ yarn-error.log
 .env
 .phpunit.result.cache
 docs/node_modules
+docs/.vuepress/dist
