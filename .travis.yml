@@ -1,6 +1,7 @@
 language: php
 php:
   - 7.2
+sudo: required
 
 before_install:
   - sudo rm -rf ~/.nvm - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
@@ -9,10 +10,10 @@ before_install:
 jobs:
   include:
     - stage: Build Project
-      - npm install
-      - composer install
-      - npm run production
-      
+      script: npm install
+      script: composer install
+      script: npm run production
+
     - stage: Test
       script: ./vendor/bin/phpunit
 
