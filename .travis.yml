@@ -10,9 +10,10 @@ before_install:
 jobs:
   include:
     - stage: Build Project
-      script: npm install
-      script: composer install
-      script: npm run production
+      script:
+      - npm install
+      - composer install
+      - npm run production
 
     - stage: Test
       script: ./vendor/bin/phpunit
