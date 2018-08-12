@@ -7,21 +7,31 @@ before_install:
   - sudo rm -rf ~/.nvm - curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
   - sudo apt-get install -y nodejs
 
+install:
+  - npm install
+  - composer install
+  - cd docs
+  - npm install
+
+stages:
+  - build
+  - test
+  - docs
+  - release
+
 jobs:
   include:
-    - stage: Build Project
+    - stage: build
       script:
       - npm install
       - composer install
       - npm run production
 
-    - stage: Test
+    - stage: test
       script: ./vendor/bin/phpunit
 
-    - stage: Build Docs
+    - stage: docs
       script: ./docs/node_modules/vuepress build
-
-    - stage: Deploy GH Page
       deploy:
         provider: pages
         skip-cleanup: true
@@ -30,7 +40,7 @@ jobs:
         on: 
           branch: master
 
-    - stage: GitHub Release
+    - stage: release
       deploy:
         provider: releases
         api_key: $GITHUB_OAUTH_TOKEN
