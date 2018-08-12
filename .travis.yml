@@ -19,6 +19,7 @@ install:
   - cd docs && npm install
   - cd ../
   - cp .env.travis .env
+  - php artisan key:generate
 
 stages:
   - build
