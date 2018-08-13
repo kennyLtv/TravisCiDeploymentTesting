@@ -45,6 +45,7 @@ jobs:
         provider: pages
         skip-cleanup: true
         local_dir: docs/.vuepress/dist
+        fqdn: tcdt.kennyl.design
         github-token: $GITHUB_OAUTH_TOKEN
         keep-history: true
         on: 
