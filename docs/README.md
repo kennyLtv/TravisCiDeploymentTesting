@@ -1,5 +1,5 @@
 # Travic CI Laravel and VuePress
-<img src="https://travis-ci.org/kennyLtv/TravisCiDeploymentTesting.svg?branch=master"/>
+[![Build Status](https://travis-ci.org/kennyLtv/TravisCiDeploymentTesting.svg?branch=master)](https://travis-ci.org/kennyLtv/TravisCiDeploymentTesting)
 
 Travis CI deployment for Laravel and VuePress projects. 
 * Deploy's docs to GitHub Pages.
